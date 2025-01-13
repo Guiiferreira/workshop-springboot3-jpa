@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,12 +20,14 @@ public class Order implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id  // chave primária
+	@Id // chave primária
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
 
-	@ManyToOne //anotaçao para o jpa transformar em chave estrangeira 
+	@ManyToOne // anotaçao para o jpa transformar em chave estrangeira
 	@JoinColumn(name = "client_id")
 	private User client;
 
@@ -31,7 +35,6 @@ public class Order implements Serializable {
 
 	}
 
-	
 	public Order(Long id, Instant moment, User client) {
 		super();
 		this.id = id;
