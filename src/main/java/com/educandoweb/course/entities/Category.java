@@ -26,7 +26,7 @@ public class Category implements Serializable {
 	private Long id;
 	private String name;
 	
-	@JsonIgnore 
+	@JsonIgnore //pra não haver loop no postman pq um chama o outro
 	@ManyToMany(mappedBy = "categories")
 	private Set<Product> products = new HashSet<>();
 
