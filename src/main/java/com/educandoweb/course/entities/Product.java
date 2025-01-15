@@ -13,28 +13,33 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
 @Entity
-@Table(name = "tb_category")
-
-public class Category implements Serializable {
-
+@Table(name = "tb_product")
+public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Id // chave primária
+	
+	@Id  // chave primária
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private String desciption;
+	private Double price;
+	private String imgUrl;
 	
 	@Transient
-	private Set<Product> products = new HashSet<>();
-
-	public Category() {
-
+	private Set<Category> categories = new HashSet<>();
+	
+	
+	public Product () {
+		
 	}
 
-	public Category(Long id, String name) {
+	public Product(Long id, String name, String desciption, Double price, String imgUrl) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.desciption = desciption;
+		this.price = price;
+		this.imgUrl = imgUrl;
 	}
 
 	public Long getId() {
@@ -53,8 +58,32 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
-	public Set<Product> getProducts() {
-		return products;
+	public String getDesciption() {
+		return desciption;
+	}
+
+	public void setDesciption(String desciption) {
+		this.desciption = desciption;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	public Set<Category> getCategories() {
+		return categories;
 	}
 
 	@Override
@@ -70,8 +99,9 @@ public class Category implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Product other = (Product) obj;
 		return Objects.equals(id, other.id);
 	}
 
+	
 }
