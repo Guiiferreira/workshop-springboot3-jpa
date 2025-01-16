@@ -46,6 +46,9 @@ public class Order implements Serializable {
 	
 	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)//mapeando as duas entidades para ter o mesmo id
 	private Payment payment;
+	
+	
+	
 	public Order() {
 
 	}
@@ -107,6 +110,13 @@ public class Order implements Serializable {
 		return items;
 	}
 	
+	public Double getTotal() {
+		double sum = 0.0;
+		for (OrderItem x : items) {
+			sum += x.getSubTotal();
+		}
+		return sum;
+	}
 	
 	
 	@Override
