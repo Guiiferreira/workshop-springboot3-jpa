@@ -9,6 +9,8 @@ Este repositório contém o código e os exemplos do workshop de integração en
 - PostgreSQL
 - POSTMAN
 - Maven
+## Modelo de domínio
+![Image](https://github.com/user-attachments/assets/e9f1eecb-fa06-4883-a314-d18250121388)
 
 ## Como Rodar o Projeto
 
